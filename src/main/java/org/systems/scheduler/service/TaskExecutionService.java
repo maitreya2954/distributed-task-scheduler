@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.systems.scheduler.model.TaskType;
 import org.systems.scheduler.strategy.TaskExecutionStrategy;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -12,7 +13,7 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 class TaskExecutionService {
 	
 	@Autowired
-	private Map<String, TaskExecutionStrategy> taskExecutionStrategies;
+	private Map<TaskType, TaskExecutionStrategy> taskExecutionStrategies;
 	
 	@CircuitBreaker(name="taskExecution", fallbackMethod = "handleTaskExecutionFailure")
 	public void executeTask(String taskId) {
@@ -27,6 +28,10 @@ class TaskExecutionService {
         if (strategy != null) {
         	try {
         		strategy.executeTask(taskId);
+        		//Simulate failure
+                if (Math.random() < 0.5) {
+                	throw new RuntimeException("Task execution failed for task: " + taskId);
+                }
 			} catch (Exception e) {
                 // Handle task execution failure
                 System.out.println("Failed to execute task: " + taskId);
@@ -37,10 +42,6 @@ class TaskExecutionService {
             System.out.println("Unknown task type: " + taskType);
         }
         
-        //Simulate failure
-        if (Math.random() < 0.5) {
-        	throw new RuntimeException("Task execution failed for task: " + taskId);
-        }
 	}
 	
 	public void handleTaskExecutionFailure(String taskId, Throwable throwable) {
