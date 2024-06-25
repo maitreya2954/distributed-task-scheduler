@@ -53,6 +53,17 @@
 			<artifactId>resilience4j-spring-boot2</artifactId>
 			<version>1.7.0</version>
 		</dependency>
+		    <dependency>
+		      <groupId>org.slf4j</groupId>
+		      <artifactId>slf4j-api</artifactId>
+		      <version>${slf4j.version}</version>
+		    </dependency>
+		    <!-- Logback (SLF4J implementation) -->
+		    <dependency>
+		      <groupId>ch.qos.logback</groupId>
+		      <artifactId>logback-classic</artifactId>
+		      <version>${logback.version}</version>
+		    </dependency>
 	</dependencies>
 
 	<build>
