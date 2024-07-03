@@ -28,11 +28,11 @@ class TaskControllerTest {
 	@Test
 	public void testSubmitTask() throws Exception {
         Task task = new Task(null, TaskType.TYPE1, 1, null, "payload");
-        String taskId = "EMAIL-SENDING-123";
+        String taskId = "TYPE1-123";
         Mockito.when(taskService.submitTask(Mockito.any(Task.class))).thenReturn(taskId);
         mockMvc.perform(post("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"type\":\"EMAIL_SENDING\",\"priority\":1,\"payload\":\"payload\"}"))
+                        .content("{\"type\":\"TYPE1\",\"priority\":1,\"payload\":\"payload\"}"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Task submitted successfully with ID: " + taskId));
 	}

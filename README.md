@@ -72,7 +72,7 @@ services:
 ```dtd
  curl -X POST \
   -H "Content-Type: application/json" \
-  -d '{"id": "123456", "type": "EMAIL_SENDING", "priority": 1, "status": "pending", "payload": "Hello, world!"}' \
+  -d '{"id": "123456", "type": "TYPE1", "priority": 1, "status": "pending", "payload": "Hello, world!"}' \
   http://localhost:8080/tasks
 ```
 

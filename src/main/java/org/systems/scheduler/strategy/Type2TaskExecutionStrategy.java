@@ -1,5 +1,8 @@
 package org.systems.scheduler.strategy;
 
+import org.springframework.stereotype.Component;
+
+@Component("TYPE2")
 public class Type2TaskExecutionStrategy implements TaskExecutionStrategy {
 
 	@Override

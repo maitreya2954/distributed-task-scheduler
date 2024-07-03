@@ -13,12 +13,12 @@ import org.systems.scheduler.strategy.TaskExecutionStrategy;
 class TaskExecutionServiceTest {
 	
 	@Autowired
-	TaskExecutionService taskExecutionService;
+	private TaskExecutionService taskExecutionService;
 	
 	@MockBean
 	private Map<TaskType, TaskExecutionStrategy> taskExecutionStrategies;
 	
-	@MockBean
+	@MockBean(name = "TYPE1")
 	private TaskExecutionStrategy type1ExecutionStrategy;
 
 	public void testExecuteTask() throws Exception {

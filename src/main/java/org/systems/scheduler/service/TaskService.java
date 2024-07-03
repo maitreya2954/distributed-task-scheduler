@@ -18,7 +18,7 @@ public class TaskService {
 	private StringRedisTemplate stringRedisTemplate;
 	
 	@Autowired
-	private TaskDistributor taskDistributor;
+	TaskDistributor taskDistributor;
 	
 	public String submitTask(Task task) {
 		String taskId = UUID.randomUUID().toString() + "-" + task.getType();
