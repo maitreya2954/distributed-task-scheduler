@@ -28,7 +28,7 @@ public class TaskService {
             stringRedisTemplate.opsForHash().put(taskKey, "priority", String.valueOf(task.getPriority()));
             stringRedisTemplate.opsForHash().put(taskKey, "payload", task.getPayload());
 
-            taskDistributor.distributeTask(taskId);
+            taskDistributor.distributeTask(taskId)	;
 
             LOGGER.info("Task submitted successfully with ID: {}", taskId);
         } catch (Exception e) {
