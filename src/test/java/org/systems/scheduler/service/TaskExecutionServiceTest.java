@@ -24,7 +24,7 @@ class TaskExecutionServiceTest {
 	public void testExecuteTask() throws Exception {
 		String taskId = "TYPE1-9999";
 		
-		Mockito.when(taskExecutionStrategies.get(TaskType.TYPE1)).thenReturn(type1ExecutionStrategy);
+		Mockito.when(taskExecutionStrategies.get("TYPE1")).thenReturn(type1ExecutionStrategy);
 		Mockito.doNothing().when(taskExecutionService).executeTask(Mockito.anyString());
 		
 		taskExecutionService.executeTask(taskId);

@@ -17,7 +17,7 @@ class TaskExecutionService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TaskExecutionService.class);
 	
 	@Autowired
-	private Map<TaskType, TaskExecutionStrategy> taskExecutionStrategies;
+	private Map<String, TaskExecutionStrategy> taskExecutionStrategies;
 	
 	@CircuitBreaker(name="taskExecution", fallbackMethod = "handleTaskExecutionFailure")
 	public void executeTask(String taskId) {
